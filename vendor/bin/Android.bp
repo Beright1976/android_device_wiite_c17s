@@ -1,0 +1,20 @@
+cc_binary {
+    name: "wiite_bridge_daemon",
+    srcs: ["wiite_bridge_daemon.cpp"],
+    vendor: true,
+    
+    // Links standard C++ libraries
+    shared_libs: [
+        "libbase",
+        "liblog",
+        "libutils",
+    ],
+
+    // FIX 3: Correct relative path mapping to the device tree's init directory
+    init_rc: ["../../rootdir/etc/init/wiite_bridge.rc"],
+
+    cflags: [
+        "-Wall",
+        "-Werror",
+    ],
+}

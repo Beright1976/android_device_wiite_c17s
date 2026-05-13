@@ -1,0 +1,77 @@
+# LOKMAT APPLLP 5 MAX (C17S) - recovery.fstab
+# ============================================================================
+# Device   : LOKMAT APPLLP 5 MAX | Codename: c17s
+# SoC      : MT6762V/WB (MT6762 silicon, MT6765 software platform)
+# Recovery : TWRP 11 (android-11 branch)
+# Author   : beright1976
+# ============================================================================
+# FORMAT: Pure AOSP 5-column format throughout.
+
+# ============================================================================
+/dev/block/platform/bootdevice/by-name/md_udc      /metadata   ext4    noatime,nosuid,nodev,discard    wait,formattable
+/dev/block/platform/bootdevice/by-name/userdata    /data       ext4    noatime,nosuid,nodev,discard    wait,check,formattable,fileencryption=aes-256-xts
+/dev/block/platform/bootdevice/by-name/cache       /cache      ext4    noatime,nosuid,nodev,discard    wait,check,formattable
+
+# ============================================================================
+# Logical Partitions (Dynamic — mounted from super via device-mapper)
+# ============================================================================
+# system, vendor, and product live inside the super partition and are exposed
+# as device-mapper block devices by the logical partition manager.
+# BOARD_MAIN_PARTITION_LIST in BoardConfig.mk declares these to the build system.
+# ============================================================================
+/dev/block/mapper/system                           /system     ext4    ro,barrier=1                    wait,logical
+/dev/block/mapper/vendor                           /vendor     ext4    ro,barrier=1                    wait,logical
+/dev/block/mapper/product                          /product    ext4    ro,barrier=1                    wait,logical
+
+# ============================================================================
+# Standard Partitions
+# ============================================================================
+# protect_f / protect_s: MTK modem and connectivity calibration data storage.
+# nvram / nvdata / nvcfg: Non-volatile calibration data (RF, sensors, etc.)
+# tee1 / tee2: Trusted Execution Environment firmware images (iTrustee)
+# md1img / md1dsp / md1arm7 / md3img: Modem firmware partitions
+# scp1 / scp2: Sensor Control Processor firmware
+# sspm_1 / sspm_2: System Security Power Manager firmware
+# spmfw: System Power Manager firmware
+# para (mapped as /misc): Bootloader message partition
+# frp (mapped as /persistent): Factory Reset Protection partition
+# lk / lk2: Little Kernel bootloader images
+# ============================================================================
+/dev/block/platform/bootdevice/by-name/protect1   /protect_f   ext4    noatime,nosuid,nodev,discard    wait
+/dev/block/platform/bootdevice/by-name/protect2   /protect_s   ext4    noatime,nosuid,nodev,discard    wait
+/dev/block/platform/bootdevice/by-name/nvram       /nvram       emmc    defaults                        defaults
+/dev/block/platform/bootdevice/by-name/nvdata      /nvdata      ext4    noatime,nosuid,nodev,discard    wait
+/dev/block/platform/bootdevice/by-name/nvcfg       /nvcfg       ext4    noatime,nosuid,nodev,discard    wait
+/dev/block/platform/bootdevice/by-name/boot        /boot        emmc    defaults                        defaults
+/dev/block/platform/bootdevice/by-name/recovery    /recovery    emmc    defaults                        defaults
+/dev/block/platform/bootdevice/by-name/dtbo        /dtbo        emmc    defaults                        defaults
+/dev/block/platform/bootdevice/by-name/odmdtbo     /odmdtbo     emmc    defaults                        defaults
+/dev/block/platform/bootdevice/by-name/vbmeta      /vbmeta      emmc    defaults                        defaults
+/dev/block/platform/bootdevice/by-name/vbmeta_system  /vbmeta_system  emmc  defaults                   defaults
+/dev/block/platform/bootdevice/by-name/vbmeta_vendor  /vbmeta_vendor  emmc  defaults                   defaults
+/dev/block/platform/bootdevice/by-name/lk          /bootloader  emmc    defaults                        defaults
+/dev/block/platform/bootdevice/by-name/lk2         /bootloader2 emmc    defaults                        defaults
+/dev/block/platform/bootdevice/by-name/logo        /logo        emmc    defaults                        defaults
+/dev/block/platform/bootdevice/by-name/expdb       /expdb       emmc    defaults                        defaults
+/dev/block/platform/bootdevice/by-name/seccfg      /seccfg      emmc    defaults                        defaults
+/dev/block/platform/bootdevice/by-name/para        /misc        emmc    defaults                        defaults
+/dev/block/platform/bootdevice/by-name/boot_para   /boot_para   emmc    defaults                        defaults
+/dev/block/platform/bootdevice/by-name/proinfo     /proinfo     emmc    defaults                        defaults
+/dev/block/platform/bootdevice/by-name/tee1        /tee1        emmc    defaults                        defaults
+/dev/block/platform/bootdevice/by-name/tee2        /tee2        emmc    defaults                        defaults
+/dev/block/platform/bootdevice/by-name/frp         /persistent  emmc    defaults                        defaults
+/dev/block/platform/bootdevice/by-name/md1img      /md1img      emmc    defaults                        defaults
+/dev/block/platform/bootdevice/by-name/md1dsp      /md1dsp      emmc    defaults                        defaults
+/dev/block/platform/bootdevice/by-name/md1arm7     /md1arm7     emmc    defaults                        defaults
+/dev/block/platform/bootdevice/by-name/md3img      /md3img      emmc    defaults                        defaults
+/dev/block/platform/bootdevice/by-name/scp1        /scp1        emmc    defaults                        defaults
+/dev/block/platform/bootdevice/by-name/scp2        /scp2        emmc    defaults                        defaults
+/dev/block/platform/bootdevice/by-name/sspm_1      /sspm_1      emmc    defaults                        defaults
+/dev/block/platform/bootdevice/by-name/sspm_2      /sspm_2      emmc    defaults                        defaults
+/dev/block/platform/bootdevice/by-name/spmfw       /spmfw       emmc    defaults                        defaults
+
+# ============================================================================
+# Removable Storage
+# ============================================================================
+/dev/block/mmcblk1p1                               /external_sd  auto   defaults                        defaults
+/dev/block/sda1                                    /usb_otg      auto   defaults                        defaults

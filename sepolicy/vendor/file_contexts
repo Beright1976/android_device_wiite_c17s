@@ -1,0 +1,5 @@
+# wiite_bridge_daemon executable
+/vendor/bin/wiite_bridge_daemon                 u:object_r:wiite_bridge_exec:s0
+
+# wiite_corp_ctrl sysfs interface (Fixing the ODM generic label mismatch)
+/sys/class/misc/wiite_corp_ctrl(/.*)?           u:object_r:sysfs_nrf:s0

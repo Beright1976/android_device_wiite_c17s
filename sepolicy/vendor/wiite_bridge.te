@@ -1,0 +1,25 @@
+# wiite_bridge_daemon — SELinux type enforcement
+# Domain for the nRF52832 hardware initialization controller
+# LOKMAT APPLLP 5 MAX (C17S) — LineageOS 18.1
+
+# Type declarations
+type wiite_bridge, domain;
+type wiite_bridge_exec, exec_type, vendor_file_type, file_type;
+type sysfs_nrf, fs_type, sysfs_type;
+
+# Transition to this domain when launched from init
+init_daemon_domain(wiite_bridge)
+
+# ttyS1 UART data plane — nRF52832 data stream
+allow wiite_bridge ttyS_device:chr_file { open read write ioctl getattr };
+
+# wiite_corp_ctrl sysfs control plane — nRF52832 initialization interface
+allow wiite_bridge sysfs_nrf:dir { search };
+allow wiite_bridge sysfs_nrf:file { open read write getattr };
+
+# sysfs RTC — required for Step 3 nrf_rtc datetime sync
+allow wiite_bridge sysfs_rtc:dir { search };
+allow wiite_bridge sysfs_rtc:file r_file_perms;
+
+# Self — allow pause() to hold indefinitely
+allow wiite_bridge self:process { sigcatch };

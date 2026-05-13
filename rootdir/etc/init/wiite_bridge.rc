@@ -1,0 +1,20 @@
+# wiite_bridge_daemon — nRF52832 Hardware Initialization Controller
+# Replaces com.wiite.devicedaemon:communication
+# Verified boot delay: wiite_corp kernel driver ready at 8,405ms
+# sys.boot_completed=1 fires at ~37,000ms — well past the dead zone
+
+service wiite_bridge /vendor/bin/wiite_bridge_daemon
+    class late_start
+    user root
+    group system
+    disabled
+    oneshot
+
+# Trap 1 avoidance: do not start until Android is fully booted
+# Guarantees we are past the 7,259ms nRF52832 I2C probe delay
+on property:sys.boot_completed=1
+    start wiite_bridge
+
+# If daemon exits abnormally restart it
+on property:init.svc.wiite_bridge=stopped
+    start wiite_bridge
