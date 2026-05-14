@@ -1,0 +1,18 @@
+cc_binary {
+    name: "wiite_bridge_daemon",
+    srcs: ["vendor/bin/wiite_bridge_daemon.cpp"],
+    vendor: true,
+
+    shared_libs: [
+        "libbase",
+        "liblog",
+        "libutils",
+    ],
+
+    init_rc: ["rootdir/etc/init/wiite_bridge.rc"],
+
+    cflags: [
+        "-Wall",
+        "-Werror",
+    ],
+}
