@@ -1,7 +1,7 @@
 # AndroidProducts.mk — LOKMAT APPLLP 5 MAX (C17S)
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/device.mk
+    $(LOCAL_DIR)/lineage_c17s.mk
 
 COMMON_LUNCH_CHOICES := \
     lineage_c17s-user \
