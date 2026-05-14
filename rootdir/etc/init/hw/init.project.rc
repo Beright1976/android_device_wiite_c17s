@@ -1,0 +1,45 @@
+# LOKMAT APPLLP 5 MAX (C17S) — init.project.rc
+# LineageOS 18.1 Clean ROM
+# ODM dead code removed: iAmCdRom.iso mount, remosaic_daemon
+# SELinux restorecon added for wiite_corp_ctrl sysfs nodes
+
+import init.mt6765.usb.rc
+
+on init
+    mkdir /mnt/media_rw/usbotg 0700 media_rw media_rw
+    mkdir /storage/usbotg 0700 root root
+    export SECONDARY_STORAGE /storage/sdcard1
+
+on post-fs-data
+    # Phase 6e: Apply sysfs_nrf SELinux label to wiite_corp_ctrl nodes
+    # Must fire before wiite_bridge_daemon starts
+    # Kernel creates these nodes with generic sysfs label at probe time
+    # restorecon forces correct label for enforcing mode access
+    restorecon -R /sys/class/misc/wiite_corp_ctrl
+
+    # Camera AF nodes — required for MTK camera HAL
+    chmod 0660 /dev/MAINAF
+    chown system camera /dev/MAINAF
+    chmod 0660 /dev/MAINAF2
+    chown system camera /dev/MAINAF2
+    chmod 0660 /dev/SUBAF
+    chown system camera /dev/SUBAF
+    chmod 0660 /dev/GAF001AF
+    chown system camera /dev/GAF001AF
+    chmod 0660 /dev/DW9714AF
+    chown system camera /dev/DW9714AF
+    chmod 0660 /dev/LC898212AF
+    chown system camera /dev/LC898212AF
+    chmod 0660 /dev/BU64745GWZAF
+    chown system camera /dev/BU64745GWZAF
+
+    # SMB screen communication
+    chown system system /proc/smb/ScreenComm
+    chmod 0660 /proc/smb/ScreenComm
+    chown system system /dev/spm
+    chmod 0660 /dev/spm
+
+# USB OTG storage service
+service fuse_usbotg /system/bin/sdcard -u 1023 -g 1023 -w 1023 -d /mnt/media_rw/usbotg /storage/usbotg
+    class late_start
+    disabled

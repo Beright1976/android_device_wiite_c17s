@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Restore standard AOSP navigation bar -->
+    <!-- ODM forced this off to hide nav bar on 2.4-inch screen -->
+    <bool name="config_showNavigationBar">true</bool>
+
+    <!-- Restore standard AOSP status bar height -->
+    <!-- ODM set this to 0 to hide status bar entirely -->
+    <dimen name="status_bar_height_portrait">24dp</dimen>
+    <dimen name="status_bar_height_landscape">24dp</dimen>
+    <dimen name="status_bar_height">24dp</dimen>
+</resources>
