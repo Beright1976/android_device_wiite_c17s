@@ -23,8 +23,31 @@ if [ ! -f "${HELPER}" ]; then
 fi
 source "${HELPER}"
 
-# Default to adb if no path is provided, but allow local dump path overriding
-SRC=$1
+# Default to sanitizing the vendor folder before extraction
+CLEAN_VENDOR=true
+
+KANG=
+SECTION=
+
+while [ "${#}" -gt 0 ]; do
+    case "${1}" in
+        -n | --no-cleanup )
+            CLEAN_VENDOR=false
+            ;;
+        -k | --kang )
+            KANG="--kang"
+            ;;
+        -s | --section )
+            SECTION="${2}"; shift
+            CLEAN_VENDOR=false
+            ;;
+        * )
+            SRC="${1}"
+            ;;
+    esac
+    shift
+done
+
 if [ -z "${SRC}" ]; then
     SRC="adb"
 fi
@@ -34,13 +57,10 @@ fi
 # ==========================================================
 function blob_fixup() {
     case "${1}" in
-        # RPATH corrections for NVRAM/Calibration libraries
         vendor/lib64/libhwm.so | vendor/lib64/libnvram.so | vendor/lib64/libfile_op.so)
             echo "[FIXUP] Patching RPATH for ${1}"
             patchelf --set-rpath /vendor/lib64 "${2}"
             ;;
-
-        # HARD SAFETY NET: Destroy ODM malware if ever listed
         vendor/operator/app/Stopwatch* | \
         product/priv-app/AdupsFota* | \
         product/priv-app/WearDeviceDeamPix* | \
@@ -54,11 +74,8 @@ function blob_fixup() {
     esac
 }
 
-# Initialize the helper
 setup_vendor "${DEVICE}" "${VENDOR}" "${ANDROID_ROOT}" false "${CLEAN_VENDOR}"
 
-# Extract the blobs using the verified manifest
-extract "${MY_DIR}/proprietary-files.txt" "${SRC}" "${ANDROID_ROOT}"
+extract "${MY_DIR}/proprietary-files.txt" "${SRC}" "${KANG}" --section "${SECTION}"
 
-# Automatically execute the makefile generation once extraction is complete
 "${MY_DIR}/setup-makefiles.sh"
