@@ -22,4 +22,4 @@ allow wiite_bridge sysfs_rtc:dir { search };
 allow wiite_bridge sysfs_rtc:file r_file_perms;
 
 # Self — allow pause() to hold indefinitely
-allow wiite_bridge self:process { sigcatch };
+allow wiite_bridge self:process { signal };
