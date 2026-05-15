@@ -28,7 +28,7 @@ BOARD_HAS_MTK_HARDWARE := true
 BOARD_USES_MTK_HARDWARE := true
 MTK_HARDWARE := true
 
-# Kernel — prebuilt (Claude's Static Cmdline Correction Applied)
+# Kernel — prebuilt
 BOARD_KERNEL_CMDLINE := console=tty0 console=ttyS0,921600n1 vmalloc=400M slub_debug=OFZPU page_owner=on swiotlb=noforce androidboot.hardware=mt6765 maxcpus=8 loop.max_part=7 firmware_class.path=/vendor/firmware has_battery_removed=0 androidboot.boot_devices=bootdevice,11230000.mmc root=/dev/ram androidboot.verifiedbootstate=orange bootopt=64S3,32N2,64N2 buildvariant=user androidboot.atm=disabled androidboot.meta_log_disable=0 printk.disable_uart=0 gpt=1 usb2jtag_mode=0 mrdump_ddrsv=yes mrdump_cb=0x10e800,0x1400 androidboot.dtb_idx=0 androidboot.dtbo_idx=0 androidboot.usbcontroller=musb-hdrc
 BOARD_KERNEL_BASE := 0x40000000
 BOARD_KERNEL_OFFSET := 0x00080000
@@ -56,6 +56,8 @@ BOARD_MKBOOTIMG_ARGS += --dtb $(TARGET_PREBUILT_DTB)
 # Partitions — verified from /proc/partitions and lpdump
 BOARD_BOOTIMAGE_PARTITION_SIZE := 33554432
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 33554432
+BOARD_DTBOIMG_PARTITION_SIZE := 8388608
+BOARD_CACHEIMAGE_PARTITION_SIZE := 452984832
 BOARD_FLASH_BLOCK_SIZE := 131072
 BOARD_HAS_LARGE_FILESYSTEM := true
 
@@ -81,6 +83,9 @@ TARGET_COPY_OUT_PRODUCT := product
 BOARD_BUILD_SYSTEM_ROOT_IMAGE := false
 BOARD_SUPPRESS_SECURE_ERASE := true
 
+# Recovery
+TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery.fstab
+
 # AVB — disabled on this device, flags=0x00000000 verified from vbmeta binary
 BOARD_AVB_ENABLE := true
 BOARD_AVB_ALGORITHM := SHA256_RSA2048
@@ -97,6 +102,13 @@ BOARD_VNDK_VERSION := current
 
 # Metadata partition
 BOARD_USES_METADATA_PARTITION := true
+BOARD_ROOT_EXTRA_FOLDERS += metadata
+
+# Memory
+MALLOC_SVELTE := true
+
+# Network
+TARGET_IGNORES_FTP_PPTP_CONNTRACK_FAILURE := true
 
 # Display — verified from /sys/class/graphics/fb0/virtual_size
 TARGET_SCREEN_DENSITY := 160
@@ -108,13 +120,13 @@ BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
 # OTA
 TARGET_OTA_ASSERT_DEVICE := C17S,c17s,APPLLP5MAX,WP_C17S_PIX_TFT_D4
 
-# SELinux Configuration for custom daemon
-BOARD_SEPOLICY_VERS := 29.0
+# SELinux
 BOARD_VENDOR_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
+SELINUX_IGNORE_NEVERALLOWS := true
+TARGET_USES_PREBUILT_VENDOR_SEPOLICY := true
+TARGET_HAS_FUSEBLK_SEPOLICY_ON_VENDOR := true
 
 # MTK build requirements
 USE_CUSTOM_AUDIO_POLICY := 1
 USE_XML_AUDIO_POLICY_CONF := 1
-SELINUX_IGNORE_NEVERALLOWS := true
-TARGET_USES_PREBUILT_VENDOR_SEPOLICY := true
-TARGET_HAS_FUSEBLK_SEPOLICY_ON_VENDOR := true
+TARGET_SUPPORTS_64_BIT_APPS := true
