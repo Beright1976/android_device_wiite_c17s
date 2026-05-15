@@ -11,7 +11,7 @@ type sysfs_nrf, fs_type, sysfs_type;
 init_daemon_domain(wiite_bridge)
 
 # ttyS1 UART data plane — nRF52832 data stream
-allow wiite_bridge ttyS_device:chr_file { open read write ioctl getattr };
+allow wiite_bridge serial_device:chr_file { open read write ioctl getattr };
 
 # wiite_corp_ctrl sysfs control plane — nRF52832 initialization interface
 allow wiite_bridge sysfs_nrf:dir { search };
