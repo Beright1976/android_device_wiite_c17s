@@ -89,3 +89,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.radio.fd.r8.counter=150 \
     persist.vendor.radio.fd.off.counter=50 \
     persist.vendor.radio.fd.off.r8.counter=50
+    
+# Force creation of recovery system/etc directory — AOSP build bug workaround
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/recovery.fstab:recovery/root/system/etc/recovery.fstab    

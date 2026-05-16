@@ -85,7 +85,6 @@ BOARD_SUPPRESS_SECURE_ERASE := true
 
 # Recovery
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery.fstab
-BOARD_RECOVERY_ROOT_EXTRA_FOLDERS := system/etc
 
 # AVB — disabled on this device, flags=0x00000000 verified from vbmeta binary
 BOARD_AVB_ENABLE := true
