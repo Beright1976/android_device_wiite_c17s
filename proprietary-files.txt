@@ -101,12 +101,23 @@ vendor/etc/permissions/android.hardware.camera.xml
 
 # ==============================================================
 # SECTION 6 — AUDIO STACK
+# All libs confirmed from live device
+# audio_param: 98 files — device-specific MTK tuning parameters
+# aurisys_param: 1 file — speech audio parameter
 # ==============================================================
 vendor/bin/hw/android.hardware.audio@5.0-service-mediatek
 vendor/lib64/hw/audio.primary.mt6765.so
+vendor/lib64/hw/audio.primary.default.so
+vendor/lib/hw/audio.primary.default.so
 vendor/lib64/hw/audio.bluetooth.default.so
 vendor/lib64/hw/audio.r_submix.default.so
+vendor/lib64/hw/audio.r_submix.mt6765.so
+vendor/lib/hw/audio.r_submix.mt6765.so
 vendor/lib64/hw/audio.usb.default.so
+vendor/lib64/hw/audio.usb.mt6765.so
+vendor/lib/hw/audio.usb.mt6765.so
+vendor/lib64/hw/sound_trigger.primary.mt6765.so
+vendor/lib/hw/sound_trigger.primary.mt6765.so
 vendor/lib64/soundfx/libaudiopreprocessing.so
 vendor/lib64/soundfx/libbundlewrapper.so
 vendor/lib64/soundfx/libdownmix.so
@@ -124,6 +135,104 @@ vendor/etc/usb_audio_policy_configuration.xml
 vendor/etc/r_submix_audio_policy_configuration.xml
 vendor/etc/audio_policy_volumes.xml
 vendor/etc/default_volume_tables.xml
+vendor/etc/aurisys_config.xml
+vendor/etc/aurisys_param/Speech_AudioParam.xml
+vendor/etc/audio_param/VoIPDMNR_ParamUnitDesc.xml
+vendor/etc/audio_param/SoundEnhancement_AudioParam.xml
+vendor/etc/audio_param/UplinkConfiguration_ParamUnitDesc.xml
+vendor/etc/audio_param/SpeechUI_ParamUnitDesc.xml
+vendor/etc/audio_param/SpeechGeneral_ParamUnitDesc.xml
+vendor/etc/audio_param/VoIPv2UI_ParamUnitDesc.xml
+vendor/etc/audio_param/SpeechEchoRef_AudioParam.xml
+vendor/etc/audio_param/Record_ParamTreeView.xml
+vendor/etc/audio_param/Record_ParamUnitDesc.xml
+vendor/etc/audio_param/SpeechVolUI_ParamUnitDesc.xml
+vendor/etc/audio_param/RecordDMNR_AudioParam.xml
+vendor/etc/audio_param/VoIPVolUI_ParamUnitDesc.xml
+vendor/etc/audio_param/RecordFIR_ParamUnitDesc.xml
+vendor/etc/audio_param/PlaybackHCF_ParamUnitDesc.xml
+vendor/etc/audio_param/VoIPGeneral_ParamUnitDesc.xml
+vendor/etc/audio_param/BtInfo_ParamUnitDesc.xml
+vendor/etc/audio_param/Speech_AudioParam.xml
+vendor/etc/audio_param/SpeechUI_AudioParam.xml
+vendor/etc/audio_param/SpeechDMNR_ParamUnitDesc.xml
+vendor/etc/audio_param/PlaybackDRC_ParamUnitDesc.xml
+vendor/etc/audio_param/VoIPv2UI_AudioParam.xml
+vendor/etc/audio_param/PlaybackVolUI_AudioParam.xml
+vendor/etc/audio_param/VoIPVol_ParamUnitDesc.xml
+vendor/etc/audio_param/PlaybackVolAna_AudioParam.xml
+vendor/etc/audio_param/VoIPGeneral_AudioParam.xml
+vendor/etc/audio_param/RecordVolUI_AudioParam.xml
+vendor/etc/audio_param/SpeechVolUI_AudioParam.xml
+vendor/etc/audio_param/HpImpedance_AudioParam.xml
+vendor/etc/audio_param/MicInfo_AudioParam.xml
+vendor/etc/audio_param/SpeechMagiClarity_AudioParam.xml
+vendor/etc/audio_param/Playback_AudioParam.xml
+vendor/etc/audio_param/SpeechNetwork_AudioParam.xml
+vendor/etc/audio_param/Volume_AudioParam.xml
+vendor/etc/audio_param/SpeechVol_ParamUnitDesc.xml
+vendor/etc/audio_param/USBDevice_ParamUnitDesc.xml
+vendor/etc/audio_param/VoIPDMNR_AudioParam.xml
+vendor/etc/audio_param/VoIP_ParamTreeView.xml
+vendor/etc/audio_param/VolumeGainMapUL_AudioParam.xml
+vendor/etc/audio_param/SpeechGeneral_AudioParam.xml
+vendor/etc/audio_param/VoIPv2_ParamUnitDesc.xml
+vendor/etc/audio_param/VoIPUI_AudioParam.xml
+vendor/etc/audio_param/SpeechVol_AudioParam.xml
+vendor/etc/audio_param/SpeechEchoRef_ParamUnitDesc.xml
+vendor/etc/audio_param/PlaybackACF_AudioParam.xml
+vendor/etc/audio_param/VoIPv2_ParamTreeView.xml
+vendor/etc/audio_param/RecordUI_ParamUnitDesc.xml
+vendor/etc/audio_param/Playback_ParamUnitDesc.xml
+vendor/etc/audio_param/PlaybackHCF_AudioParam.xml
+vendor/etc/audio_param/RingbackVol_AudioParam.xml
+vendor/etc/audio_param/HpImpedance_ParamUnitDesc.xml
+vendor/etc/audio_param/VoIPv2General_AudioParam.xml
+vendor/etc/audio_param/USBCall_ParamUnitDesc.xml
+vendor/etc/audio_param/PlaybackVolDigi_ParamUnitDesc.xml
+vendor/etc/audio_param/Playback_ParamTreeView.xml
+vendor/etc/audio_param/BtInfo_AudioParam.xml
+vendor/etc/audio_param/VoIPVolUI_AudioParam.xml
+vendor/etc/audio_param/Speech_ParamUnitDesc.xml
+vendor/etc/audio_param/SpeechNetwork_ParamUnitDesc.xml
+vendor/etc/audio_param/RecordFIR_AudioParam.xml
+vendor/etc/audio_param/RecordVol_AudioParam.xml
+vendor/etc/audio_param/VolumeGainMap_AudioParam.xml
+vendor/etc/audio_param/Speech_ParamTreeView.xml
+vendor/etc/audio_param/VolumeGainMapUL_ParamUnitDesc.xml
+vendor/etc/audio_param/RingbackVolUI_AudioParam.xml
+vendor/etc/audio_param/UplinkConfiguration_AudioParam.xml
+vendor/etc/audio_param/RecordVol_ParamUnitDesc.xml
+vendor/etc/audio_param/VoIPUI_ParamUnitDesc.xml
+vendor/etc/audio_param/VoIPv2DMNR_AudioParam.xml
+vendor/etc/audio_param/PlaybackDRC_AudioParam.xml
+vendor/etc/audio_param/VOW_ParamUnitDesc.xml
+vendor/etc/audio_param/VoIP_AudioParam.xml
+vendor/etc/audio_param/RecordUI_AudioParam.xml
+vendor/etc/audio_param/Volume_ParamUnitDesc.xml
+vendor/etc/audio_param/VoIP_ParamUnitDesc.xml
+vendor/etc/audio_param/RingbackVolUI_ParamUnitDesc.xml
+vendor/etc/audio_param/MicInfo_ParamUnitDesc.xml
+vendor/etc/audio_param/RecordDMNR_ParamUnitDesc.xml
+vendor/etc/audio_param/SoundEnhancement_ParamUnitDesc.xml
+vendor/etc/audio_param/RingbackVol_ParamUnitDesc.xml
+vendor/etc/audio_param/VoIPv2_AudioParam.xml
+vendor/etc/audio_param/VOW_AudioParam.xml
+vendor/etc/audio_param/VoIPVol_AudioParam.xml
+vendor/etc/audio_param/USBDevice_AudioParam.xml
+vendor/etc/audio_param/PlaybackACF_ParamUnitDesc.xml
+vendor/etc/audio_param/PlaybackVolUI_ParamUnitDesc.xml
+vendor/etc/audio_param/SpeechDMNR_AudioParam.xml
+vendor/etc/audio_param/PlaybackVolDigi_AudioParam.xml
+vendor/etc/audio_param/SpeechMagiClarity_ParamUnitDesc.xml
+vendor/etc/audio_param/VoIPv2DMNR_ParamUnitDesc.xml
+vendor/etc/audio_param/VolumeGainMap_ParamUnitDesc.xml
+vendor/etc/audio_param/USBCall_AudioParam.xml
+vendor/etc/audio_param/Record_AudioParam.xml
+vendor/etc/audio_param/RecordVolUI_ParamUnitDesc.xml
+vendor/etc/audio_param/AudioParamOptions.xml
+vendor/etc/audio_param/PlaybackVolAna_ParamUnitDesc.xml
+vendor/etc/audio_param/VoIPv2General_ParamUnitDesc.xml
 
 # ==============================================================
 # SECTION 7 — RADIO & MODEM STACK
@@ -243,7 +352,14 @@ vendor/lib64/lbs_hidl_service-impl.so
 vendor/lib64/vendor.mediatek.hardware.lbs@1.0.so
 
 # ==============================================================
-# SECTION 9 — CRYPTO STACK
+# SECTION 9 — GPS / LOCATION HAL
+# gps.default.so confirmed present in dump — lib and lib64
+# ==============================================================
+vendor/lib64/hw/gps.default.so
+vendor/lib/hw/gps.default.so
+
+# ==============================================================
+# SECTION 10 — CRYPTO STACK
 # VNDK-29 resolves natively — no isolation bubble needed
 # ==============================================================
 vendor/lib64/libkeymaster4.so
@@ -252,7 +368,7 @@ vendor/lib64/hw/android.hardware.gatekeeper@1.0-impl.so
 vendor/lib64/hw/libSoftGatekeeper.so
 
 # ==============================================================
-# SECTION 10 — NVRAM & CALIBRATION
+# SECTION 11 — NVRAM & CALIBRATION
 # RPATH correction applied via blob_fixup in extract-files.sh
 # nvram_hidl confirmed absent from device entirely
 # ==============================================================
@@ -261,7 +377,7 @@ vendor/lib64/libnvram.so
 vendor/lib64/libfile_op.so
 
 # ==============================================================
-# SECTION 11 — VINTF & ODM MANIFESTS
+# SECTION 12 — VINTF & ODM MANIFESTS
 # manifest_ss.xml is active runtime config on this device
 # ==============================================================
 vendor/odm/etc/vintf/manifest_ss.xml
@@ -271,7 +387,7 @@ vendor/odm/etc/vintf/manifest_ss_se.xml
 vendor/etc/vintf/compatibility_matrix.xml
 
 # ==============================================================
-# SECTION 12 — HAL SERVICE BINARIES
+# SECTION 13 — HAL SERVICE BINARIES
 # Complete HAL list from live vndservicemanager
 # vtservice_hidl confirmed at vendor/bin/hw/ on live device
 # ==============================================================
