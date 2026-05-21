@@ -98,6 +98,9 @@ vendor/lib64/libSonyIMX386PdafLibraryWrapper.so
 vendor/lib64/libSonyIMX519PdafLibrary.so
 vendor/lib64/libSonyIMX519PdafLibraryWrapper.so
 vendor/etc/permissions/android.hardware.camera.xml
+### CCU ISP Firmware (vendor/bin/ — ODM deployment, not /vendor/firmware/)
+vendor/bin/lib3a.ccu.dm
+vendor/bin/lib3a.ccu.pm
 
 # ==============================================================
 # SECTION 6 — AUDIO STACK

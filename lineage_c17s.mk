@@ -30,6 +30,7 @@ TARGET_VENDOR_PRODUCT_NAME := c17s
 PRODUCT_FULL_TREBLE_OVERRIDE := true
 PRODUCT_VNDK_VERSION := 29
 PRODUCT_EXTRA_VNDK_VERSIONS := 29
+PRODUCT_SHIPPING_API_LEVEL := 29
 TARGET_SUPPORTS_64_BIT_APPS := true
 
 # Boot animation resolution
@@ -46,7 +47,8 @@ PRODUCT_DEL_PACKAGES += \
     WearDeviceDeamPix \
     WearCleanTaskPro \
     WearAppFreeze \
-    HeilsFaceUnlockDM101
+    HeilsFaceUnlockDM101 \
+    WapiCertManager
 
 # 5. UI Overlay — Restore standard AOSP nav bar and status bar
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
@@ -100,6 +102,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.radio.multisim.config=ss \
     ro.telephony.sim.count=1
+    
+# 13. USB VID/PID — ADB host recognition and MTP enumeration
+PRODUCT_PROPERTY_OVERRIDES += \
+    vendor.usb.vid=0x0E8D \
+    vendor.usb.pid=0x201D
 
 # 12. Radio Fast Dormancy — LTE power saving
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -112,3 +119,18 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Force creation of recovery system/etc directory — AOSP build bug workaround
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/recovery.fstab:recovery/root/system/etc/recovery.fstab
+    
+# rootdir Deployment
+# fstab.mt6765 -> ramdisk: first-stage mount reads this to assemble super partition
+#   (system, vendor, product logical volumes via device-mapper before /vendor exists)
+# fstab.mt6765 -> vendor: vold and second-stage init read from here at runtime
+# init.project.rc -> vendor: platform init script loaded by init from /vendor/etc/init/hw/
+#   Sets up USB OTG storage, camera AF nodes, SMB screen comm, wiite_corp_ctrl SELinux labels
+#   ODM dead code removed: iAmCdRom.iso mount, remosaic_daemon
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/rootdir/etc/fstab.mt6765:$(TARGET_COPY_OUT_RAMDISK)/fstab.mt6765 \
+    $(LOCAL_PATH)/rootdir/etc/fstab.mt6765:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.mt6765 \
+    $(LOCAL_PATH)/rootdir/etc/init/hw/init.project.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.project.rc
+
+# Vendor blobs — HALs, firmware, proprietary libs extracted via extract-files.sh
+$(call inherit-product, vendor/wiite/c17s/c17s-vendor.mk)
