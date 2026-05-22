@@ -1,14 +1,13 @@
-# ==============================================================
-# LOKMAT APPLLP 5 MAX (C17S) — proprietary-files.txt
-# LineageOS 18.1 Device Tree
-# Authority: C17S_SOFTWARE_Forensics.txt v2.0 (11,199 lines)
-# Live lsof analysis 2026-05-14
-# All paths verified against super_unpacked dump and live device
-# ==============================================================
+### ==============================================================
+### LOKMAT APPLLP 5 MAX (C17S) — proprietary-files.txt
+### LineageOS 18.1 Device Tree (Android 11)
+### Fully mapped against zygote64_32 Franken-SoC architecture.
+### WARNING: DO NOT INCLUDE /system/ BLOBS. VNDK-29 HANDLES SYSTEM.
+### ==============================================================
 
-# ==============================================================
-# SECTION 1 — FIRMWARE BLOBS
-# ==============================================================
+### ==============================================================
+### SECTION 1 — FIRMWARE BLOBS
+### ==============================================================
 vendor/firmware/rgx.fw
 vendor/firmware/WIFI_RAM_CODE_soc1_0_1_1.bin
 vendor/firmware/soc1_0_patch_mcu_1_1_hdr.bin
@@ -19,75 +18,191 @@ vendor/firmware/WMT_SOC.cfg
 vendor/firmware/BT_FW.cfg
 vendor/firmware/MNL.bin
 vendor/firmware/gt1151_default_firmware2.img
+vendor/bin/lib3a.ccu.dm
+vendor/bin/lib3a.ccu.pm
 
-# ==============================================================
-# SECTION 2 — SENSOR STACK
-# ==============================================================
+### ==============================================================
+### SECTION 2 — MTK INIT SCRIPTS (CRITICAL FOR DAEMON STARTUP)
+### ==============================================================
+vendor/etc/init/hw/factory_init.connectivity.rc
+vendor/etc/init/hw/factory_init.project.rc
+vendor/etc/init/hw/factory_init.rc
+vendor/etc/init/hw/init.aee.rc
+vendor/etc/init/hw/init.ago.rc
+vendor/etc/init/hw/init.connectivity.rc
+vendor/etc/init/hw/init.modem.rc
+vendor/etc/init/hw/init.mt6762.rc
+vendor/etc/init/hw/init.mt6765.rc
+vendor/etc/init/hw/init.mt6765.usb.rc
+vendor/etc/init/hw/init.sensor_1_0.rc
+vendor/etc/init/hw/meta_init.connectivity.rc
+vendor/etc/init/hw/meta_init.modem.rc
+vendor/etc/init/hw/meta_init.project.rc
+vendor/etc/init/hw/meta_init.rc
+vendor/etc/init/hw/multi_init.rc
+vendor/etc/init/android.hardware.audio@5.0-service-mediatek.rc
+vendor/etc/init/android.hardware.bluetooth@1.0-service-mediatek.rc
+vendor/etc/init/android.hardware.cas@1.1-service.rc
+vendor/etc/init/android.hardware.configstore@1.1-service.rc
+vendor/etc/init/android.hardware.drm@1.0-service.rc
+vendor/etc/init/android.hardware.drm@1.2-service.clearkey.rc
+vendor/etc/init/android.hardware.drm@1.2-service.widevine.rc
+vendor/etc/init/android.hardware.gatekeeper@1.0-service.rc
+vendor/etc/init/android.hardware.gnss@2.0-service-mediatek.rc
+vendor/etc/init/android.hardware.graphics.allocator@2.0-service.rc
+vendor/etc/init/android.hardware.graphics.composer@2.1-service.rc
+vendor/etc/init/android.hardware.health@2.0-service.rc
+vendor/etc/init/android.hardware.keymaster@4.0-service.rc
+vendor/etc/init/android.hardware.light@2.0-service-mediatek.rc
+vendor/etc/init/android.hardware.media.omx@1.0-service.rc
+vendor/etc/init/android.hardware.memtrack@1.0-service.rc
+vendor/etc/init/android.hardware.secure_element@1.0-service-mediatek.rc
+vendor/etc/init/android.hardware.sensors@2.0-service-mediatek.rc
+vendor/etc/init/android.hardware.thermal@1.0-service.rc
+vendor/etc/init/android.hardware.usb@1.1-service-mediatek.rc
+vendor/etc/init/android.hardware.vibrator@1.0-service.rc
+vendor/etc/init/android.hardware.wifi@1.0-service-lazy-mediatek.rc
+vendor/etc/init/atcid.rc
+vendor/etc/init/audiocmdservice_atci.rc
+vendor/etc/init/bootperf.rc
+vendor/etc/init/camerahalserver.rc
+vendor/etc/init/em_hidl_user.rc
+vendor/etc/init/fuelgauged_init.rc
+vendor/etc/init/fuelgauged_nvram_init.rc
+vendor/etc/init/gsm0710muxd.rc
+vendor/etc/init/hostapd.android.rc
+vendor/etc/init/init.bip.rc
+vendor/etc/init/init.bt_drv.rc
+vendor/etc/init/init.cccifsd.rc
+vendor/etc/init/init.cccimdinit.rc
+vendor/etc/init/init.cccirpcd.rc
+vendor/etc/init/init_connectivity.rc
+vendor/etc/init/init.gps_drv.rc
+vendor/etc/init/init.md_apps.rc
+vendor/etc/init/init.thermal.rc
+vendor/etc/init/init.thermal_manager.rc
+vendor/etc/init/init.thermalloadalgod.rc
+vendor/etc/init/init.volte_imcb.rc
+vendor/etc/init/init.volte_imsm_93.rc
+vendor/etc/init/init.volte_md_status.rc
+vendor/etc/init/init.volte_stack.rc
+vendor/etc/init/init.volte_ua.rc
+vendor/etc/init/init.vtservice_hidl.rc
+vendor/etc/init/init.wfca.rc
+vendor/etc/init/init.wlan_drv.rc
+vendor/etc/init/init.wmt_drv.rc
+vendor/etc/init/init.wod.rc
+vendor/etc/init/ipsec_mon.rc
+vendor/etc/init/lbs_hidl_service.rc
+vendor/etc/init/mtk_agpsd_p.rc
+vendor/etc/init/mtkrild.rc
+vendor/etc/init/muxreport.rc
+vendor/etc/init/netdagent.rc
+vendor/etc/init/nvram_daemon.rc
+vendor/etc/init/vendor.mediatek.hardware.gpu@1.0-service.rc
+vendor/etc/init/vendor.mediatek.hardware.mms@1.3-service.rc
+vendor/etc/init/vendor.mediatek.hardware.mtkcodecservice@1.1-service.rc
+vendor/etc/init/vendor.mediatek.hardware.mtkpower@1.0-init.rc
+vendor/etc/init/vendor.mediatek.hardware.mtkpower@1.0-service.rc
+vendor/etc/init/vendor.mediatek.hardware.nvram@1.1-sevice.rc
+vendor/etc/init/vendor.mediatek.hardware.pq@2.2-service.rc
+vendor/etc/init/vndservicemanager.rc
+vendor/etc/init/wlan_assistant.rc
+
+### ==============================================================
+### SECTION 3 — SENSOR & THERMAL STACK (64 + 32 BIT)
+### ==============================================================
 vendor/lib64/hw/sensors.mt6765.so
 vendor/lib64/libksensor.so
 vendor/lib64/libsensor_custom.so
-
-# ==============================================================
-# SECTION 3 — THERMAL STACK
-# thermal_policy.conf confirmed absent from dump and live device
-# ==============================================================
 vendor/lib64/hw/thermal.mt6765.so
+vendor/lib/hw/thermal.mt6765.so
 vendor/etc/.tp/thermal.conf
 vendor/etc/.tp/thermal.off.conf
 vendor/etc/.tp/.ht120.mtc
 
-# ==============================================================
-# SECTION 4 — DISPLAY & GPU
-# PowerVR GE8320 — all libs confirmed from live lsof analysis
-# ==============================================================
-vendor/lib64/egl/libEGL_mtk.so
-vendor/lib64/egl/libGLES_meow.so
-vendor/lib64/egl/libGLESv1_CM_mtk.so
-vendor/lib64/egl/libGLESv2_mtk.so
-vendor/lib64/egl/libMEOW_trace.so
+### ==============================================================
+### SECTION 4 — DISPLAY, GPU & GRALLOC (64 + 32 BIT)
+### ==============================================================
 vendor/lib/egl/egl.cfg
+vendor/lib64/egl/libEGL_mtk.so
+vendor/lib/egl/libEGL_mtk.so
+vendor/lib64/egl/libGLES_meow.so
+vendor/lib/egl/libGLES_meow.so
+vendor/lib64/egl/libGLESv1_CM_mtk.so
+vendor/lib/egl/libGLESv1_CM_mtk.so
+vendor/lib64/egl/libGLESv2_mtk.so
+vendor/lib/egl/libGLESv2_mtk.so
+vendor/lib64/egl/libMEOW_trace.so
+vendor/lib/egl/libMEOW_trace.so
 vendor/lib64/hw/gralloc.mt6765.so
+vendor/lib/hw/gralloc.mt6765.so
 vendor/lib64/hw/hwcomposer.mt6765.so
 vendor/lib64/hw/vulkan.mt6765.so
+vendor/lib/hw/vulkan.mt6765.so
 vendor/lib64/hw/android.hardware.graphics.mapper@2.0-impl-2.1.so
+vendor/lib/hw/android.hardware.graphics.mapper@2.0-impl-2.1.so
 vendor/lib64/hw/android.hardware.graphics.allocator@2.0-impl.so
+vendor/lib/hw/android.hardware.graphics.allocator@2.0-impl.so
 vendor/lib64/libdpframework.so
+vendor/lib/libdpframework.so
 vendor/lib64/libpq_cust_base.so
+vendor/lib/libpq_cust_base.so
 vendor/lib64/libpq_prot.so
+vendor/lib/libpq_prot.so
 vendor/lib64/libPVROCL.so
+vendor/lib/libPVROCL.so
 vendor/lib64/libOpenCL.so
+vendor/lib/libOpenCL.so
 vendor/lib64/libglslcompiler.so
+vendor/lib/libglslcompiler.so
 vendor/lib64/libmpvr.so
+vendor/lib/libmpvr.so
 vendor/lib64/libgpu_aux.so
+vendor/lib/libgpu_aux.so
 vendor/lib64/libion_mtk.so
+vendor/lib/libion_mtk.so
 vendor/lib64/libion_ulit.so
+vendor/lib/libion_ulit.so
 vendor/lib64/vendor.mediatek.hardware.pq@2.0.so
+vendor/lib/vendor.mediatek.hardware.pq@2.0.so
 vendor/lib64/libusc.so
+vendor/lib/libusc.so
 vendor/lib64/libladder.so
+vendor/lib/libladder.so
 vendor/lib64/libsrv_um.so
+vendor/lib/libsrv_um.so
 vendor/lib64/vendor.mediatek.hardware.gpu@1.0.so
+vendor/lib/vendor.mediatek.hardware.gpu@1.0.so
 vendor/lib64/libgralloc_extra.so
+vendor/lib/libgralloc_extra.so
 vendor/lib64/libged.so
+vendor/lib/libged.so
 vendor/lib64/libIMGegl.so
+vendor/lib/libIMGegl.so
 vendor/lib64/libgpud.so
+vendor/lib/libgpud.so
 vendor/lib64/libdrm.so
+vendor/lib/libdrm.so
 
-# ==============================================================
-# SECTION 5 — CAMERA STACK
-# GC2385 rear 2MP + GC030A front VGA confirmed functional
-# Sony PDAF and bf2553L mandatory per Section 6.11 database note
-# ==============================================================
+### ==============================================================
+### SECTION 5 — CAMERA STACK & ISP (64 + 32 BIT)
+### ==============================================================
 vendor/bin/hw/camerahalserver
 vendor/lib64/hw/android.hardware.camera.provider@2.4-impl-mediatek.so
 vendor/lib64/hw/vendor.mediatek.hardware.camera.bgservice@1.1-impl.so
+vendor/lib/hw/vendor.mediatek.hardware.camera.bgservice@1.1-impl.so
 vendor/lib64/hw/vendor.mediatek.hardware.camera.lomoeffect@1.0-impl.so
 vendor/lib64/libcam.feature_utils.so
 vendor/lib64/mtkcam/libmtkcam_streaminfo_plugin-p1stt.so
 vendor/lib64/gc2385_mipi_raw_tuning.so
+vendor/lib/gc2385_mipi_raw_tuning.so
 vendor/lib64/gc2385_mipi_raw_IdxMgr.so
 vendor/lib64/gc030a_mipi_raw_tuning.so
+vendor/lib/gc030a_mipi_raw_tuning.so
 vendor/lib64/gc030a_mipi_raw_IdxMgr.so
 vendor/lib64/bf2553L_mipi_raw_tuning.so
+vendor/lib/bf2553L_mipi_raw_tuning.so
 vendor/lib64/bf2553L_mipi_raw_IdxMgr.so
 vendor/lib64/libSonyIMX230PdafLibrary.so
 vendor/lib64/libSonyIMX230PdafLibraryWrapper.so
@@ -98,37 +213,43 @@ vendor/lib64/libSonyIMX386PdafLibraryWrapper.so
 vendor/lib64/libSonyIMX519PdafLibrary.so
 vendor/lib64/libSonyIMX519PdafLibraryWrapper.so
 vendor/etc/permissions/android.hardware.camera.xml
-### CCU ISP Firmware (vendor/bin/ — ODM deployment, not /vendor/firmware/)
-vendor/bin/lib3a.ccu.dm
-vendor/bin/lib3a.ccu.pm
 
-# ==============================================================
-# SECTION 6 — AUDIO STACK
-# All libs confirmed from live device
-# audio_param: 98 files — device-specific MTK tuning parameters
-# aurisys_param: 1 file — speech audio parameter
-# ==============================================================
+### ==============================================================
+### SECTION 6 — AUDIO STACK (64 + 32 BIT)
+### ==============================================================
 vendor/bin/hw/android.hardware.audio@5.0-service-mediatek
 vendor/lib64/hw/audio.primary.mt6765.so
+vendor/lib/hw/audio.primary.mt6765.so
 vendor/lib64/hw/audio.primary.default.so
 vendor/lib/hw/audio.primary.default.so
 vendor/lib64/hw/audio.bluetooth.default.so
+vendor/lib/hw/audio.bluetooth.default.so
 vendor/lib64/hw/audio.r_submix.default.so
+vendor/lib/hw/audio.r_submix.default.so
 vendor/lib64/hw/audio.r_submix.mt6765.so
 vendor/lib/hw/audio.r_submix.mt6765.so
 vendor/lib64/hw/audio.usb.default.so
+vendor/lib/hw/audio.usb.default.so
 vendor/lib64/hw/audio.usb.mt6765.so
 vendor/lib/hw/audio.usb.mt6765.so
 vendor/lib64/hw/sound_trigger.primary.mt6765.so
 vendor/lib/hw/sound_trigger.primary.mt6765.so
 vendor/lib64/soundfx/libaudiopreprocessing.so
+vendor/lib/soundfx/libaudiopreprocessing.so
 vendor/lib64/soundfx/libbundlewrapper.so
+vendor/lib/soundfx/libbundlewrapper.so
 vendor/lib64/soundfx/libdownmix.so
+vendor/lib/soundfx/libdownmix.so
 vendor/lib64/soundfx/libdynproc.so
+vendor/lib/soundfx/libdynproc.so
 vendor/lib64/soundfx/libeffectproxy.so
+vendor/lib/soundfx/libeffectproxy.so
 vendor/lib64/soundfx/libldnhncr.so
+vendor/lib/soundfx/libldnhncr.so
 vendor/lib64/soundfx/libreverbwrapper.so
+vendor/lib/soundfx/libreverbwrapper.so
 vendor/lib64/soundfx/libvisualizer.so
+vendor/lib/soundfx/libvisualizer.so
 vendor/etc/audio_policy_configuration.xml
 vendor/etc/audio_effects.xml
 vendor/etc/a2dp_audio_policy_configuration.xml
@@ -237,11 +358,9 @@ vendor/etc/audio_param/AudioParamOptions.xml
 vendor/etc/audio_param/PlaybackVolAna_ParamUnitDesc.xml
 vendor/etc/audio_param/VoIPv2General_ParamUnitDesc.xml
 
-# ==============================================================
-# SECTION 7 — RADIO & MODEM STACK
-# lbs_dbg confirmed system partition binary — not a vendor blob
-# nvram_hidl confirmed absent from device entirely
-# ==============================================================
+### ==============================================================
+### SECTION 7 — RADIO, MODEM, & VOLTE STACK (64 + 32 BIT)
+### ==============================================================
 vendor/bin/hw/mtkfusionrild
 vendor/bin/gsm0710muxd
 vendor/bin/ccci_fsd
@@ -262,11 +381,16 @@ vendor/lib64/libmtk-ril.so
 vendor/lib64/libmtk-rilop.so
 vendor/lib64/librilfusion.so
 vendor/lib64/libril.so
+vendor/lib/libril.so
 vendor/lib64/libreference-ril.so
+vendor/lib/libreference-ril.so
 vendor/lib64/libmtkrilutils.so
 vendor/lib64/librilutils.so
+vendor/lib/librilutils.so
 vendor/lib64/libmtkrillog.so
+vendor/lib/libmtkrillog.so
 vendor/lib64/libccci_util.so
+vendor/lib/libccci_util.so
 vendor/lib64/libfeature_rss.so
 vendor/lib64/vendor.mediatek.hardware.mtkradioex@1.0.so
 vendor/lib64/vendor.mediatek.hardware.mtkradioex@1.1.so
@@ -279,10 +403,15 @@ vendor/lib64/vendor.mediatek.hardware.radio_op@1.2.so
 vendor/lib64/vendor.mediatek.hardware.radio_op@1.3.so
 vendor/lib64/vendor.mediatek.hardware.radio_op@2.0.so
 vendor/lib64/libcharon-ss.so
+vendor/lib/libcharon-ss.so
 vendor/lib64/libcrypto-ss.so
+vendor/lib/libcrypto-ss.so
 vendor/lib64/libssl-ss.so
+vendor/lib/libssl-ss.so
 vendor/lib64/libcurl-ss.so
+vendor/lib/libcurl-ss.so
 vendor/lib64/libipsec_ims_shr.so
+vendor/lib/libipsec_ims_shr.so
 vendor/etc/ipsec/ipsec.conf
 vendor/etc/ipsec/strongswan.conf
 vendor/etc/ipsec/ssl/openssl.cnf
@@ -317,11 +446,9 @@ vendor/etc/spn-conf-op09.xml
 vendor/etc/permissions/android.hardware.telephony.gsm.xml
 vendor/etc/permissions/android.hardware.telephony.ims.xml
 
-# ==============================================================
-# SECTION 8 — CONNECTIVITY STACK
-# wpa_supplicant confirmed at vendor/bin/hw/ on live device
-# bluetooth.default.so confirmed absent from device entirely
-# ==============================================================
+### ==============================================================
+### SECTION 8 — CONNECTIVITY STACK (WIFI/BT) (64 + 32 BIT)
+### ==============================================================
 vendor/bin/wmt_loader
 vendor/bin/wmt_launcher
 vendor/lib/modules/wmt_drv.ko
@@ -336,64 +463,62 @@ vendor/bin/hw/hostapd
 vendor/bin/hw/wpa_supplicant
 vendor/bin/hw/android.hardware.bluetooth@1.0-service-mediatek
 vendor/lib64/libbluetooth_audio_session_mediatek.so
-vendor/lib64/libbluetooth_hw_test.so
-vendor/lib64/libbluetooth_mtk.so
-vendor/lib64/libbluetooth_mtk_pure.so
-vendor/lib64/libbluetooth_relayer.so
-vendor/lib64/libbluetoothem_mtk.so
 vendor/lib/libbluetooth_audio_session_mediatek.so
+vendor/lib64/libbluetooth_hw_test.so
 vendor/lib/libbluetooth_hw_test.so
+vendor/lib64/libbluetooth_mtk.so
 vendor/lib/libbluetooth_mtk.so
+vendor/lib64/libbluetooth_mtk_pure.so
 vendor/lib/libbluetooth_mtk_pure.so
+vendor/lib64/libbluetooth_relayer.so
 vendor/lib/libbluetooth_relayer.so
+vendor/lib64/libbluetoothem_mtk.so
 vendor/lib/libbluetoothem_mtk.so
+
+### ==============================================================
+### SECTION 9 — GPS / LOCATION HAL (64 + 32 BIT)
+### ==============================================================
 vendor/bin/hw/android.hardware.gnss@2.0-service-mediatek
 vendor/bin/mnld
 vendor/bin/lbs_hidl_service
 vendor/bin/mtk_agpsd
+vendor/lib64/hw/gps.default.so
+vendor/lib/hw/gps.default.so
 vendor/lib64/lbs_hidl_service-impl.so
 vendor/lib64/vendor.mediatek.hardware.lbs@1.0.so
 
-# ==============================================================
-# SECTION 9 — GPS / LOCATION HAL
-# gps.default.so confirmed present in dump — lib and lib64
-# ==============================================================
-vendor/lib64/hw/gps.default.so
-vendor/lib/hw/gps.default.so
-
-# ==============================================================
-# SECTION 10 — CRYPTO STACK
-# VNDK-29 resolves natively — no isolation bubble needed
-# ==============================================================
+### ==============================================================
+### SECTION 10 — CRYPTO STACK (64 + 32 BIT)
+### ==============================================================
 vendor/lib64/libkeymaster4.so
 vendor/lib64/libkeymaster4support.so
 vendor/lib64/hw/android.hardware.gatekeeper@1.0-impl.so
+vendor/lib/hw/android.hardware.gatekeeper@1.0-impl.so
 vendor/lib64/hw/libSoftGatekeeper.so
+vendor/lib/hw/libSoftGatekeeper.so
 
-# ==============================================================
-# SECTION 11 — NVRAM & CALIBRATION
-# RPATH correction applied via blob_fixup in extract-files.sh
-# nvram_hidl confirmed absent from device entirely
-# ==============================================================
+### ==============================================================
+### SECTION 11 — NVRAM & CALIBRATION (64 + 32 BIT)
+### ==============================================================
 vendor/lib64/libhwm.so
+vendor/lib/libhwm.so
 vendor/lib64/libnvram.so
+vendor/lib/libnvram.so
 vendor/lib64/libfile_op.so
+vendor/lib/libfile_op.so
 
-# ==============================================================
-# SECTION 12 — VINTF & ODM MANIFESTS
-# manifest_ss.xml is active runtime config on this device
-# ==============================================================
+### ==============================================================
+### SECTION 12 — VINTF & ODM MANIFESTS
+### ==============================================================
 vendor/odm/etc/vintf/manifest_ss.xml
 vendor/odm/etc/vintf/manifest_dsds.xml
 vendor/odm/etc/vintf/manifest_dsds_se.xml
 vendor/odm/etc/vintf/manifest_ss_se.xml
 vendor/etc/vintf/compatibility_matrix.xml
 
-# ==============================================================
-# SECTION 13 — HAL SERVICE BINARIES
-# Complete HAL list from live vndservicemanager
-# vtservice_hidl confirmed at vendor/bin/hw/ on live device
-# ==============================================================
+### ==============================================================
+### SECTION 13 — HAL SERVICE BINARIES
+### ==============================================================
 vendor/bin/hw/android.hardware.gatekeeper@1.0-service
 vendor/bin/hw/android.hardware.keymaster@4.0-service
 vendor/bin/hw/android.hardware.graphics.allocator@2.0-service
